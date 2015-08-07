@@ -1,0 +1,12 @@
+{
+  "name": "node-js-excersices",
+  "version": "1.0.0",
+  "description": "Todos + require http module from node + run createServer method on http and pass in a function with arguments request, response. The return from createServer should be saved as variable \"server\" [Docs](https://nodejs.org/api/http.html#http_http_createserver_requestlistener) + in the function. Run writeHead on response object and pass in variables 200 and an object with Content-Type: 'text/html' [Docs](https://nodejs.org/api/http.html#http_response_writehead_statuscode_statusmessage_headers) + Still in the function, run end on response object and pass in a string with HTML + Outside the function, run listen on the server object and pass in variable 8000 [Docs](https://nodejs.org/api/http.html#http_server_listen_port_hostname_backlog_callback) + Run \"node server.js\" in terminal and visit localhost:8000 in your browser + You have created a node.js web server, congrats",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
