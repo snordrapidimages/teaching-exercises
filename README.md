@@ -1,4 +1,12 @@
-# Create HTTP Server
+# Startup
+
+Todos
++ Install node js [Downloads](https://nodejs.org/download/)
++ Make sure it all works by typing "node --version" and "npm --version"
++ Clone this repo [Repo](https://github.com/snordrapidimages/teaching-exercises)
++ Run "npm install" in the repo folder
+
+# 1. Create HTTP Server
 
 Todos
 + require http module from node
@@ -12,7 +20,7 @@ Todos
 ## Done
 
 
-# Create simple router
+# 2. Create simple router
 
 Todos
 + In your createServer function. Check what url the user is requesting on "request.url" [Docs](https://nodejs.org/api/http.html#http_message_url)
@@ -24,12 +32,34 @@ Todos
 
 ## Done
 
-# Serve files
+# 3. Serve index.html
 + require fs module from node
 + For "/" route. Run readFile and pass in index.html from root folder [Docs](https://nodejs.org/api/fs.html#fs_fs_readfile_filename_options_callback)
 + As second argument, add a callback when file has been read and send the data to the client through res.send(|file contents|)
-+ For route "/app.js", use a stream instead. run createReadStream from fs module and pass in "./build/app.js" as argument
+
+## Done
+
+# 4. Serve client side javascript
++ Still in server.js. Do following
++ First we need to build the packed app.js. In top of server js. require buildClientAssets script from ./lib
++ Run server.js and make sure a folder has been created in clientside/dist with file app.js
++ For route "/app.js", use a stream to serve the file contents. run createReadStream from fs module and pass in "./clientside/dist/app.js" as argument
 + run .pipe(request) on the stream
-+ Restart the node process and visit localhost:8000 in your browser, you should now see the contents of index.html and your javascript should be excecuted
++ Restart the node process and visit localhost:8000 in your browser, you should now see the contents of index.html and your javascript should run
+
+Note: There's is a file watcher on the clientside/src folder, this watcher will create a new dist/app.js every time a file is changed in the folder. So there's no need to restart the node process if you change any clientside code.
+
+## Done
+
+# 5. Hook 'em up
+
+Now we will create a websocket connection between the client and the server. We will use socket.io
+
++ In server.js, require the websockets module from lib folder. Call the function and pass in the server variable as the argument. socket.io will add routes necessary for creating the socket connection
++ If everything is alright, you should see "Web socket server initialized" when restarting the application
++ Next up, go to clientside/src/index.js and require websocket.js from the same directory. Refresh the browser and you should se messages in the node console and a pop up should appear in the browser.
++ We have connection!
++ Try you connection by emitting a message from the server. On the clientside in websocket.js add a listener for the message and log or do something funny when it arrives.
++ Note: Make sure you emit the message after the connection has been successful!
 
 ## Done
