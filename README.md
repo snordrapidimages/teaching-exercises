@@ -3,21 +3,21 @@
 Todos
 + Install node js [Downloads](https://nodejs.org/download/)
 + Make sure it all works by typing `node --version` and `npm --version`
-+ Clone this repo [Repo](https://github.com/snordrapidimages/teaching-exercises)
++ Clone this repo
 + Run `npm install` in the repo folder
 
 # 1. Create HTTP Server
 
 Todos
 + require http module from node
-+ run createServer method on http and pass in a function with arguments request, response. The return from createServer should be saved as variable `server` [Docs](https://nodejs.org/api/http.html#http_http_createserver_requestlistener)
-+ in the function. Run writeHead on response object and pass in variables 200 and an object with Content-Type: 'text/html' [Docs](https://nodejs.org/api/http.html#http_response_writehead_statuscode_statusmessage_headers)
-+ Still in the function, run end on response object and pass in a string with HTML
-+ Outside the function, run listen on the server object and pass in variable 8000 [Docs](https://nodejs.org/api/http.html#http_server_listen_port_hostname_backlog_callback)
++ run `createServer` method on `http` and pass in a function with arguments `request, response`. The return from createServer should be saved as variable `server` [Docs](https://nodejs.org/api/http.html#http_http_createserver_requestlistener)
++ in the function. Run `writeHead` on response object and pass in variables 200 and an object with `{ Content-Type: 'text/html' }` [Docs](https://nodejs.org/api/http.html#http_response_writehead_statuscode_statusmessage_headers)
++ Still in the function, run `end` on `response` object and pass in a string with HTML
++ Outside the function, run `listen` on the `server` object and pass in variable `8000` [Docs](https://nodejs.org/api/http.html#http_server_listen_port_hostname_backlog_callback)
 + Run `node server.js` in terminal and visit localhost:8000 in your browser
 + You have created a node.js web server, congrats
 
-## Done
+### Done
 
 
 # 2. Create simple router
@@ -30,14 +30,14 @@ Todos
 + Add response.end({data}) on each case with different messages so you can tell the difference [Docs](https://nodejs.org/api/http.html#http_response_end_data_encoding_callback)
 + Try visiting index.html and app.js
 
-## Done
+### Done
 
 # 3. Serve index.html
 + require fs module from node
 + For `/` route. Run readFile and pass in index.html from root folder [Docs](https://nodejs.org/api/fs.html#fs_fs_readfile_filename_options_callback)
 + As second argument, add a callback when file has been read and send the data to the client through res.send(|file contents|)
 
-## Done
+### Done
 
 # 4. Serve client side javascript
 + Still in server.js. Do following
@@ -49,7 +49,7 @@ Todos
 
 Note: There's is a file watcher on the clientside/src folder, this watcher will create a new dist/app.js every time a file is changed in the folder. So there's no need to restart the node process if you change any clientside code.
 
-## Done
+### Done
 
 # 5. Hook 'em up
 
@@ -62,4 +62,4 @@ Now we will create a websocket connection between the client and the server. We 
 + Try you connection by emitting a message from the server. On the clientside in websocket.js add a listener for the message and log or do something funny when it arrives.
 + Note: Make sure you emit the message after the connection has been successful!
 
-## Done
+### Done
