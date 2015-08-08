@@ -1,3 +1,22 @@
+# Docs
+
+### NodeJS and Non Blocking explained
+[Complete NodeJS Explanation](https://openclassrooms.com/courses/ultra-fast-applications-using-node-js/node-js-what-is-it-for-exactly)
+[Non Blocking Examples](http://hueniverse.com/2011/06/29/the-style-of-non-blocking/)
+
+
+### NPM & Modules
+[NPM JS site](http://www.npmjs.com)
+[Official Documentation](https://nodejs.org/api/modules.html)
+[Example](http://openmymind.net/2012/2/3/Node-Require-and-Exports/)
+[In depth](http://fredkschott.com/post/2014/06/require-and-the-module-system/)
+
+### Streams
+[Official Documentation](https://nodejs.org/api/stream.html)
+[Unoffical stream handbook with examples](https://github.com/substack/stream-handbook)
+
+
+
 # 0. Startup
 
 Todos
@@ -41,11 +60,11 @@ Todos
 
 # 4. Serve client side javascript
 + Still in server.js. Do following
-+ First we need to build the packed app.js. In top of server js. require buildClientAssets script from ./lib
-+ Run server.js and make sure a folder has been created in clientside/dist with file app.js
-+ For route `/app.js`, use a stream to serve the file contents. run createReadStream from fs module and pass in `./clientside/dist/app.js` as argument
-+ run .pipe(request) on the stream
-+ Restart the node process and visit localhost:8000 in your browser, you should now see the contents of index.html and your javascript should run
++ First we need to build the packed app.js. In top of server js. require `buildClientAssets` script from `./lib`
++ Run `server.js` and make sure a folder has been created in clientside/dist with file app.js
++ For route `/app.js`, use a stream to serve the file contents. run `createReadStream` from `fs` module and pass in `./clientside/dist/app.js` as argument
++ run `.pipe(request)` on the stream
++ Restart the node process and visit [localhost:8000](localhost:8000) in your browser, you should now see the contents of index.html and your javascript should run
 
 Note: There's is a file watcher on the clientside/src folder, this watcher will create a new dist/app.js every time a file is changed in the folder. So there's no need to restart the node process if you change any clientside code.
 
@@ -57,9 +76,9 @@ Now we will create a websocket connection between the client and the server. We 
 
 + In server.js, require the websockets module from lib folder. Call the function and pass in the server variable as the argument. socket.io will add routes necessary for creating the socket connection
 + If everything is alright, you should see `Web socket server initialized` when restarting the application
-+ Next up, go to clientside/src/index.js and require websocket.js from the same directory. Refresh the browser and you should se messages in the node console and a pop up should appear in the browser.
++ Next up, go to `clientside/src/index.js` and require `websocket.js` from the same directory. Refresh the browser and you should se messages in the node console and a pop up should appear in the browser.
 + We have connection!
-+ Try you connection by emitting a message from the server. On the clientside in websocket.js add a listener for the message and log or do something funny when it arrives.
++ Try your connection by emitting a message from the server. On the clientside in websocket.js add a listener for the message and log or do something funny when it arrives.
 + Note: Make sure you emit the message after the connection has been successful!
 
 ### Done
