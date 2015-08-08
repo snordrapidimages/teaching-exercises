@@ -1,5 +1,8 @@
 # Docs
 
+##### Videos
++ [What the heck is the event loop anyway ? - Must see](https://www.youtube.com/watch?v=8aGhZQkoFbQ)
+
 ##### NodeJS and Non Blocking explained
 + [Complete NodeJS  Explanation](https://openclassrooms.com/courses/ultra-fast-applications-using-node-js/node-js-what-is-it-for-exactly)
 + [Non Blocking Examples](http://hueniverse.com/2011/06/29/the-style-of-non-blocking/)
@@ -15,7 +18,10 @@
 + [Official Documentation](https://nodejs.org/api/stream.html)
 + [Unoffical stream handbook with examples](https://github.com/substack/stream-handbook)
 
-
+##### Event Emitter
++ [Official Documentation](https://nodejs.org/api/events.html#events_class_events_eventemitter)
++ [Quick Explanation](https://codeforgeek.com/2014/11/eventemitter-node-js/)
++ [Explanation with examples](http://code.tutsplus.com/tutorials/using-nodes-event-module--net-35941)
 
 # 0. Startup
 
@@ -82,3 +88,15 @@ Now we will create a websocket connection between the client and the server. We 
 + Note: Make sure you emit the message after the connection has been successful!
 
 ### Done
+
+# 6. Event Emitter, extra task
+
+In this task, we will create an event emitter and log server response times
++ Create a new file in `lib` called `responseLogger.js`
++ Get the `EventEmitter` constructor by requiring it from event `var EventEmitter = require('events').EventEmitter;`
++ Create a new instance of the EventEmitter and assign it to variable
++ Export the `responseLogger` object with `module.exports`
++ In `server.js`, require the `responseLogger` file from lib
++ Add a start date on the request object by writing `request.started = +new Date();`, NOTE: The + sign before date will convert it to a unix timestamp
++ In the end of each response, run `responseLogger.emit('done', request);`. Make sure you emit when the response is really done
++ Back in responseLogger.js. Add a listener for the event and log the method, url and total time `console.log(request.method, request.url, ended - request.started, "ms");`
