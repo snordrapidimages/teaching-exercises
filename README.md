@@ -69,7 +69,7 @@ Todos
 + First we need to build the packed app.js. In top of server js. require `buildClientAssets` script from `./lib`
 + Run `server.js` and make sure a folder has been created in clientside/dist with file app.js
 + For route `/app.js`, use a stream to serve the file contents. run `createReadStream` from `fs` module and pass in `./clientside/dist/app.js` as argument
-+ run `.pipe(request)` on the stream
++ run `.pipe(response)` on the stream
 + Restart the node process and visit [localhost:8000](localhost:8000) in your browser, you should now see the contents of index.html and your javascript should run
 
 Note: There's is a file watcher on the clientside/src folder, this watcher will create a new dist/app.js every time a file is changed in the folder. So there's no need to restart the node process if you change any clientside code.
