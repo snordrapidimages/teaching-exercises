@@ -2,22 +2,28 @@ var socket = require('socket.io-client')("localhost:8000")
 var store = require('./store');
 
 socket.on('connect', function() {
-  console.log("Connected to server with id: " + socket.id)
+  store.receiveId(socket.id)
+  console.log("Connected to server with id: " + socket.id);
+});
+
+// TASK - USER LOGIN
+// Create an event listener on 'users'. Run store receiveUsers Inside
+// the callback
+socket.on('users', function(users) {
+  store.receiveUsers(users);
 })
 
-socket.on('hello-world', function() {
-  console.log('hello')
+// TASK - USER LOGIN
+// Create an event listener on 'user'. Run store receiveUser Inside
+// the callback
+socket.on('user', function(user) {
+  store.receiveUser(user)
 })
 
-socket.on('message', function(text) {
-  store.addMessage(text);
-})
+// TASK - USER LOGOUT
+socket.on('user-offline', function(userId) {
+  store.setUserOffline(userId);
+});
 
-/**
- * Example
- * socket.on({event-emitted-from-server}, function({arguments emitted}) {
- *
- * });
- */
 
 module.exports = socket;

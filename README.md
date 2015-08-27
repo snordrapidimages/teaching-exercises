@@ -111,3 +111,12 @@ In this task, we will create an event emitter and log server response times
 + Add a start date on the request object by writing `request.started = +new Date();`, NOTE: The + sign before date will convert it to a unix timestamp
 + In the end of each response, run `responseLogger.emit('done', request);`. Make sure you emit when the response is really done
 + Back in responseLogger.js. Add a listener for the event and log the method, url and total time `console.log(request.method, request.url, ended - request.started, "ms");`
+
+# DAY 2 - React
+
+Okey, now to the fun parts. First we need to build some sort of login. With react components, we will ask for a users name and the press login. Then we will enter the chat room and list all users
+
++ Start with all tasks marked as // TASK - USER LOGIN
++ After user login is done, we need to make users logout. When they disconnect from the webpage, a socket disconnect event will get triggered, this is our logout sign. Search for // TASK - USER LOGOUT and solve them
+
+Good luck

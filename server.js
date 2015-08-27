@@ -56,15 +56,41 @@ var server = http.createServer(function(request, response) {
 // Here we trigger the listen function on server. This will start the webserver on port specified
 server.listen(8000);
 
-var io = require('./lib/websockets')(server);
+var _users = {};
 
+var io = require('./lib/websockets')(server);
 
 io.on('connection', function(socket) {
 
-  setTimeout(function() {
-    socket.emit('hello-world');
+  _users[socket.id] = {
+    id: socket.id
+  }
 
-  }, 1000)
+  socket.emit('users', _users);
+
+  // TASK - USER LOGIN
+  // add a socket listener on the user-name event
+  // run the callback, find the users in the users dictionary
+  // by using socket.id and add the name property on that object
+  // after that, emit the 'user' event to all sockets with _users[socket.id]
+  // as paramenter
+
+  socket.on('user-name', function(name) {
+    _users[socket.id].name = name;
+
+    io.emit('user', _users[socket.id]);
+  });
+
+  // TASK - USER LOGOUT
+  // Add a listener for on 'disconnect'
+  // delete the user from the dictionary
+  // and run emit event 'user-offline' on io
+  // pass in the socket.id as argument
+  socket.on('disconnect', function() {
+    delete _users[socket.id];
+
+    io.emit('user-offline', socket.id);
+  })
 
   socket.on('message', function(message) {
     io.emit('message', message);

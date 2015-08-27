@@ -1,6 +1,4 @@
-var socket = require('./websocket.js');
+var React = require('react');
+var App = require('./components/App.jsx');
 
-document.getElementById('hej').addEventListener('click', function() {
-  
-
-});
+React.render(React.createElement(App), document.getElementById('app'));
