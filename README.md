@@ -90,7 +90,7 @@ Now we will create a websocket connection between the client and the server. We 
 Now that our websocket connection is set up, we can start sending messages between the server and the client
 
 + in `clientside/src/websocket.js` register an event listener on the event `hello-world`. Register a callback with an alert or console.log or similar
-+ on the SERVER side. Make sure that your return from websockets lib are assigned to variable io. After that, add the following event code
++ on the SERVER side. Make sure that your return from you `websockets(server)` are assigned to variable io. After that, add the following event code
 `io.on('connection', function(socket) {
 
 })`
