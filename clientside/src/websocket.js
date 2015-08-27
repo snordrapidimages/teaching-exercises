@@ -1,4 +1,5 @@
 var socket = require('socket.io-client')("localhost:8000")
+var store = require('./store');
 
 socket.on('connect', function() {
   console.log("Connected to server with id: " + socket.id)
@@ -9,9 +10,7 @@ socket.on('hello-world', function() {
 })
 
 socket.on('message', function(text) {
-  var el = document.createElement('div');
-  el.textContent = text;
-  document.body.appendChild(el)
+  store.addMessage(text);
 })
 
 /**
