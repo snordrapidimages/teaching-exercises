@@ -60,7 +60,7 @@ Todos
 # 3. Serve index.html
 + require fs module from node
 + For `/` route. Run readFile and pass in index.html from root folder [Docs](https://nodejs.org/api/fs.html#fs_fs_readfile_filename_options_callback)
-+ As second argument, add a callback when file has been read and send the data to the client through res.send(|file contents|)
++ As second argument, add a callback when file has been read and send the data to the client through res.end(|file contents|)
 
 ### Done
 
