@@ -87,6 +87,19 @@ Now we will create a websocket connection between the client and the server. We 
 + Try your connection by emitting a message from the server. On the clientside in websocket.js add a listener for the message and log or do something funny when it arrives.
 + Note: Make sure you emit the message after the connection has been successful!
 
+# 5. Send messages!
+
+Now that our websocket connection is set up, we can start sending messages between the server and the client
+
++ in `clientside/src/websocket.js` register an event listener on the event `hello-world`. Register a callback with an alert or console.log or similar
++ on the SERVER side. Make sure that your return from websockets lib are assigned to variable io. After that, add the following event code
+`io.on('connection', function(socket) {
+
+})`
++ Now that we have a connection wrapper. emit a message on socket named `hello-world`
++ Make sure that your code on the client is being triggered
+
+
 ### Done
 
 # 6. Event Emitter, extra task

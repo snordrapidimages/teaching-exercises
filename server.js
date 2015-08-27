@@ -3,11 +3,9 @@ var http = require('http');
 var fs = require('fs');
 
 // Write your code here
-
 require('./lib/buildClientAssets');
 
 var server = http.createServer(function(request, response) {
-
   switch(request.url) {
     case "/":
     case "/index.html":
@@ -28,9 +26,14 @@ var server = http.createServer(function(request, response) {
 
       fs.createReadStream('./clientside/dist/app.js').pipe(response);
       break;
-
   }
 
 });
 
 server.listen(8000)
+
+var io = require('./lib/websockets');
+
+io.on('connection', function(socket) {
+
+})
