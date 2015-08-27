@@ -27,11 +27,9 @@ var App = React.createClass({
     // TASK - USER LOGIN
     // if this.state.me.name === undefined
     // return the SignIn component
-    if(this.state.me.name === undefined) {
-      return (
-        <SignIn />
-      )
-    }
+
+
+
 
     return (
       <h1>Hello World</h1>
@@ -42,11 +40,6 @@ var App = React.createClass({
     // A div with the Users component in it
     // Dont forget to pass the users from
     // your state as parameter
-    return (
-      <div>
-          <Users users={this.state.users} />
-      </div>
-    )
 
 
   }

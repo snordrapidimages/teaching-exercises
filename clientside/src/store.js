@@ -21,9 +21,6 @@ var store = _.extend({
   receiveUsers: function(users) {
     // In this function, replace the private users with the new users
     // Emit change when done
-    _users = users;
-
-    store.emit('change');
   },
 
   // TASK - USER LOGIN
@@ -32,18 +29,11 @@ var store = _.extend({
     // with an key of the users id. This way we will be able
     // to update existing users
 
-    _users[user.id] = user;
 
     // If the user.id is equal to _id. Add a property
     // on the user called .me = true and save it to the _me variable
     //
     // emit change when done
-    if(user.id === _id) {
-      user.me = true;
-      _me = user;
-    }
-
-    store.emit('change');
   },
 
   getMe: function() {
@@ -52,9 +42,8 @@ var store = _.extend({
 
   // TASK - USER LOGOUT
   setUserOffline: function(userId) {
-    _users[userId].offline = true;
+    // Add a propery on the user called offline. set it to true
 
-    store.emit('change');
   },
 
   // TASK - USER LOGIN
@@ -66,13 +55,6 @@ var store = _.extend({
     // Also remove all users that has an offline status or users
     // missing a name parameter. filter is a good method for this
 
-    return Object.keys(_users).map(function(id) {
-      return _users[id];
-    }).filter(function(user) {
-      return !user.offline && user.name
-    });
-
-    return [];
   }
 
 }, EventEmitter.prototype);

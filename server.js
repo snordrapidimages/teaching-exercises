@@ -75,25 +75,13 @@ io.on('connection', function(socket) {
   // after that, emit the 'user' event to all sockets with _users[socket.id]
   // as paramenter
 
-  socket.on('user-name', function(name) {
-    _users[socket.id].name = name;
 
-    io.emit('user', _users[socket.id]);
-  });
 
   // TASK - USER LOGOUT
   // Add a listener for on 'disconnect'
   // delete the user from the dictionary
   // and run emit event 'user-offline' on io
   // pass in the socket.id as argument
-  socket.on('disconnect', function() {
-    delete _users[socket.id];
 
-    io.emit('user-offline', socket.id);
-  })
-
-  socket.on('message', function(message) {
-    io.emit('message', message);
-  });
 
 })

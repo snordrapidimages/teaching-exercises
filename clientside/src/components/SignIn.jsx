@@ -8,10 +8,6 @@ var SignIn = React.createClass({
     // this.refs.name.getDOMNode().value;
     // Run the signIn action from the actions object
     // Dont forget to pass in the input value
-
-    var userName = this.refs.name.getDOMNode().value;
-
-    actions.signIn(userName);
   },
 
   render: function() {
@@ -24,10 +20,7 @@ var SignIn = React.createClass({
 
     return (
       <div>
-        <input ref="name" type="text" />
-        <div onClick={this.signIn} className="btn btn-primary">Sign in</div>
       </div>
-
     )
   }
 });
