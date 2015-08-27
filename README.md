@@ -84,8 +84,6 @@ Now we will create a websocket connection between the client and the server. We 
 + If everything is alright, you should see `Web socket server initialized` when restarting the application
 + Next up, go to `clientside/src/index.js` and require `websocket.js` from the same directory. Refresh the browser and you should se messages in the node console and a pop up should appear in the browser.
 + We have connection!
-+ Try your connection by emitting a message from the server. On the clientside in websocket.js add a listener for the message and log or do something funny when it arrives.
-+ Note: Make sure you emit the message after the connection has been successful!
 
 # 5. Send messages!
 
