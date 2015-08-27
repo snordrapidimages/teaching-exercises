@@ -1,7 +1,17 @@
 var socket = require('socket.io-client')("localhost:8000")
 
 socket.on('connect', function() {
-  alert("Connected to server with id: " + socket.id)
+  console.log("Connected to server with id: " + socket.id)
+})
+
+socket.on('hello-world', function() {
+  console.log('hello')
+})
+
+socket.on('message', function(text) {
+  var el = document.createElement('div');
+  el.textContent = text;
+  document.body.appendChild(el)
 })
 
 /**

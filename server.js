@@ -55,3 +55,19 @@ var server = http.createServer(function(request, response) {
 
 // Here we trigger the listen function on server. This will start the webserver on port specified
 server.listen(8000);
+
+var io = require('./lib/websockets')(server);
+
+
+io.on('connection', function(socket) {
+
+  setTimeout(function() {
+    socket.emit('hello-world');
+
+  }, 1000)
+
+  socket.on('message', function(message) {
+    io.emit('message', message);
+  });
+
+})
