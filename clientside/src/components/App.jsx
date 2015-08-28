@@ -2,13 +2,17 @@ var React = require('react');
 var SignIn = require('./SignIn.jsx');
 var Users = require('./Users.jsx');
 var store = require('../store');
+var NewMessage = require('./NewMessage.jsx');
+var Messages = require('./Messages.jsx');
 
 var App = React.createClass({
 
   getStateFromStore: function() {
     return {
+      messages: store.getMessages(),
       users: store.getUsers(),
-      me: store.getMe()
+      me: store.getMe(),
+      selectedUser: store.getSelectedUser()
     }
   },
 
@@ -33,18 +37,20 @@ var App = React.createClass({
       )
     }
 
-    return (
-      <h1>Hello World</h1>
-    )
-
     // TASK - USER LOGIN
     // Remove the HTML above (Hello World) and return
     // A div with the Users component in it
     // Dont forget to pass the users from
     // your state as parameter
     return (
-      <div>
+      <div className="container">
+        <div className="col-sm-9">
+          <NewMessage />
+          <Messages messages={this.state.messages} />
+        </div>
+        <div className="col-sm-3">
           <Users users={this.state.users} />
+        </div>
       </div>
     )
 

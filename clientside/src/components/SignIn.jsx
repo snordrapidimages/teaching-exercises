@@ -23,9 +23,12 @@ var SignIn = React.createClass({
     // pass in the signIn function as argument
 
     return (
-      <div>
-        <input ref="name" type="text" />
-        <div onClick={this.signIn} className="btn btn-primary">Sign in</div>
+      <div className="container">
+        <div className="col-sm-4 col-sm-offset-4" style={{marginTop: '20%'}}>
+          <h2>Hello dear friend, please enter your username</h2>
+          <input ref="name" type="text" />
+          <div onClick={this.signIn} className="btn btn-primary">Sign in</div>
+        </div>
       </div>
 
     )

@@ -10,6 +10,7 @@ var _messages = [];
 var _users = {};
 var _me = {};
 var _id;
+var _selectedUserId;
 
 var store = _.extend({
 
@@ -73,6 +74,41 @@ var store = _.extend({
     });
 
     return [];
+  },
+
+  receiveMessage: function(message) {
+    _messages.push(message);
+
+    store.emit('change')
+  },
+
+  getMessages: function() {
+
+    return _messages.filter(function(message) {
+      if(!_selectedUserId) return true;
+
+      return message.user.id === _selectedUserId;
+    }).sort(function(a,b) {
+      return b.timestamp - a.timestamp;
+    });
+  },
+
+  setSelectedUser: function(id) {
+    _selectedUserId = id;
+
+    store.emit('change');
+  },
+
+  unSelectUser: function(id) {
+    _selectedUserId = undefined;
+
+    store.emit('change');
+  },
+
+  getSelectedUser: function() {
+    if(!_selectedUserId) return;
+
+    return _users[_selectedUserId];
   }
 
 }, EventEmitter.prototype);

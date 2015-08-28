@@ -25,5 +25,9 @@ socket.on('user-offline', function(userId) {
   store.setUserOffline(userId);
 });
 
+socket.on('message', function(message) {
+  store.receiveMessage(message);
+});
+
 
 module.exports = socket;
